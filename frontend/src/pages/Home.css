@@ -1,0 +1,6 @@
+.home__toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.home__tabs { display: flex; gap: 10px; }
+.home__sidebar { width: 300px; flex-shrink: 0; padding: 24px 24px 24px 0; display: flex; flex-direction: column; gap: 16px; }
+.home__widget { padding: 16px; }
+.home__hashtag { margin: 6px 0; font-size: 0.88rem; }
+@media (max-width: 900px) { .home__sidebar { display: none; } }

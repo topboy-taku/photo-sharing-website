@@ -1,0 +1,7 @@
+.comments { margin-top: 20px; }
+.comments h4 { margin-bottom: 10px; }
+.comments__list { list-style: none; padding: 0; margin: 0 0 14px 0; display: flex; flex-direction: column; gap: 8px; }
+.comments__item { font-size: 0.88rem; }
+.comments__author { color: var(--orbit-purple-light); font-weight: 600; margin-right: 6px; }
+.comments__form { display: flex; gap: 8px; }
+.comments__form .input-field { flex: 1; }

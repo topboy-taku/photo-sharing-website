@@ -1,0 +1,2 @@
+.orbit-image { width: 100%; border-radius: var(--orbit-radius); overflow: hidden; background: var(--orbit-surface-raised); }
+.orbit-image img { width: 100%; max-height: 520px; object-fit: cover; display: block; }

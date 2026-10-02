@@ -1,0 +1,3 @@
+.post-page { max-width: 760px; }
+.post-page__breadcrumb { margin-bottom: 16px; font-size: 0.85rem; }
+.post-page__breadcrumb a { color: var(--orbit-purple-light); }

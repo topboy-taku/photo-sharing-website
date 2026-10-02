@@ -1,0 +1,6 @@
+.album-preview { display: block; overflow: hidden; }
+.album-preview__image { width: 100%; height: 140px; object-fit: cover; display: block; }
+.album-preview__image--empty { display: flex; align-items: center; justify-content: center; background: var(--orbit-surface-raised); font-size: 0.85rem; }
+.album-preview__body { padding: 10px 12px; }
+.album-preview__title { margin: 0; font-weight: 600; }
+.album-preview__stats { margin: 2px 0 0 0; font-size: 0.8rem; }

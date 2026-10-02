@@ -1,0 +1,9 @@
+.create-post { padding: 20px; }
+.create-post h3 { margin-bottom: 16px; }
+.create-post__dropzone { position: relative; border: 1px dashed var(--orbit-border); border-radius: var(--orbit-radius-sm); min-height: 120px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+.create-post__dropzone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.create-post__preview { width: 100%; height: 160px; object-fit: cover; }
+.create-post__tags { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.create-post__chip { background: var(--orbit-surface-raised); border: 1px solid var(--orbit-border); border-radius: 999px; padding: 4px 10px; font-size: 0.8rem; color: var(--orbit-purple-light); }
+.create-post__chip button { background: none; border: none; color: var(--orbit-text-muted); margin-left: 4px; padding: 0; }
+.create-post__actions { display: flex; gap: 10px; margin-top: 8px; }

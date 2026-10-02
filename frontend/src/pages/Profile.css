@@ -1,0 +1,7 @@
+.profile-page__layout { display: flex; gap: 24px; align-items: flex-start; }
+.profile-page__main { flex: 1; min-width: 0; }
+.profile-page__tabs { display: flex; gap: 10px; margin-bottom: 18px; flex-wrap: wrap; }
+.profile-page__new { margin-left: auto; }
+.profile-page__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.profile-page__sidebar { width: 280px; flex-shrink: 0; }
+@media (max-width: 900px) { .profile-page__sidebar { display: none; } }

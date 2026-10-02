@@ -1,0 +1,11 @@
+.album-page { max-width: 900px; }
+.album-page__breadcrumb { margin-bottom: 16px; font-size: 0.85rem; }
+.album-page__breadcrumb a { color: var(--orbit-purple-light); }
+.album-page__header, .album-page__edit-form { padding: 20px; margin-bottom: 20px; }
+.album-page__actions { display: flex; gap: 10px; margin-top: 12px; }
+.album-page__add-post { padding: 16px; margin-bottom: 20px; }
+.album-page__add-row { display: flex; gap: 10px; margin-top: 8px; }
+.album-page__add-row select { flex: 1; }
+.album-page__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.album-page__post-wrap { display: flex; flex-direction: column; gap: 6px; }
+.album-page__remove { font-size: 0.78rem; padding: 6px 10px; }

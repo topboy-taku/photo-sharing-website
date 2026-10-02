@@ -1,0 +1,11 @@
+.post { max-width: 720px; }
+.post__header { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 18px; gap: 16px; }
+.post__actions { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
+.post__description { margin: 12px 0; color: var(--orbit-text-muted); line-height: 1.5; }
+.post__tags { margin-bottom: 10px; }
+.post__album-link { color: var(--orbit-pink); }
+.post__stats { font-size: 0.85rem; margin-bottom: 18px; }
+.post__author { display: flex; align-items: center; gap: 12px; padding: 14px; margin-bottom: 10px; }
+.post__author-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; font-size: 1.1rem; }
+.post__author-name { margin: 0; font-weight: 600; }
+.post__author-view { margin-left: auto; }

@@ -1,0 +1,6 @@
+.profile-preview { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; }
+.profile-preview__link { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.profile-preview__avatar { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; font-size: 1rem; }
+.profile-preview__name { margin: 0; font-size: 0.88rem; font-weight: 600; }
+.profile-preview__sub { margin: 0; font-size: 0.78rem; }
+.profile-preview__action { flex-shrink: 0; }

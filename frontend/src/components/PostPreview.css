@@ -1,0 +1,9 @@
+.post-preview { display: block; overflow: hidden; transition: border-color 0.15s ease; }
+.post-preview:hover { border-color: var(--orbit-purple-light); }
+.post-preview__image { width: 100%; height: 180px; object-fit: cover; display: block; background: var(--orbit-surface-raised); }
+.post-preview__body { padding: 12px 14px; }
+.post-preview__meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.82rem; margin-bottom: 6px; }
+.post-preview__favourite { color: var(--orbit-pink); font-size: 0.78rem; }
+.post-preview__title { margin: 0 0 6px 0; font-weight: 600; }
+.post-preview__tags { margin-bottom: 8px; }
+.post-preview__stats { font-size: 0.78rem; }

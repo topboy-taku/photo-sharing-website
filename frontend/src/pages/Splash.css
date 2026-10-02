@@ -1,0 +1,15 @@
+.splash { min-height: 100vh; padding: 0 40px 40px; }
+.splash__nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; }
+.splash__logo { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; }
+.splash__dot { color: var(--orbit-pink); }
+.splash__nav-links { display: flex; gap: 32px; color: var(--orbit-text-muted); }
+.splash__content { display: flex; gap: 60px; align-items: flex-start; flex-wrap: wrap; margin-top: 40px; }
+.splash__hero { flex: 1; min-width: 320px; }
+.splash__hero h1 { font-size: 3.2rem; line-height: 1.1; }
+.splash__accent { color: var(--orbit-pink); }
+.splash__tagline { color: var(--orbit-text-muted); max-width: 480px; margin: 20px 0; line-height: 1.6; }
+.splash__pills { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9rem; }
+.splash__pills span::before { content: "● "; color: var(--orbit-pink); }
+.splash__auth { width: 380px; padding: 28px; flex-shrink: 0; }
+.splash__tabs { display: flex; gap: 10px; margin: 18px 0; }
+.splash__tabs .btn { flex: 1; }

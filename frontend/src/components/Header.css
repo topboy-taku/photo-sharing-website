@@ -1,0 +1,25 @@
+.orbit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  border-bottom: 1px solid var(--orbit-border);
+  background: rgba(11, 14, 35, 0.85);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.orbit-header__logo {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.orbit-header__dot { color: var(--orbit-pink); font-size: 0.6rem; }
+.orbit-header__nav { display: flex; align-items: center; gap: 24px; font-size: 0.9rem; color: var(--orbit-text-muted); }
+.orbit-header__nav a:hover { color: var(--orbit-text); }
+.orbit-header__logout { background: none; border: none; color: var(--orbit-text-muted); font-size: 0.9rem; padding: 0; }
+.orbit-header__logout:hover { color: var(--orbit-pink); }

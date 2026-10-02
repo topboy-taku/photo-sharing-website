@@ -1,0 +1,7 @@
+.edit-profile { padding: 24px; max-width: 480px; }
+.edit-profile h3 { margin-bottom: 4px; }
+.edit-profile__dropzone { position: relative; display: flex; align-items: center; gap: 12px; border: 1px dashed var(--orbit-border); border-radius: var(--orbit-radius-sm); padding: 12px; margin: 16px 0; overflow: hidden; }
+.edit-profile__dropzone img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
+.edit-profile__avatar-fallback { width: 56px; height: 56px; font-size: 1.4rem; }
+.edit-profile__dropzone input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.edit-profile__actions { display: flex; gap: 10px; margin-top: 8px; flex-wrap: wrap; }

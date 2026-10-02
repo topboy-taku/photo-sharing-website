@@ -1,0 +1,3 @@
+.friend-list { padding: 16px; margin-bottom: 16px; }
+.friend-list__header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.friend-list__request-actions { display: flex; gap: 6px; }
