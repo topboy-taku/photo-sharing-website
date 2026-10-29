@@ -1,0 +1,56 @@
+[
+  {
+    "_id": "6ae34e435066a332497eba6b",
+    "owner": "6ae34e425066a332497eba4d",
+    "name": "Late Night Drives",
+    "description": "Everything shot after midnight.",
+    "hashtags": [
+      "latenight",
+      "film"
+    ],
+    "coverImage": "",
+    "posts": [
+      "6ae34e445066a332497eba73",
+      "6ae34e445066a332497eba76"
+    ],
+    "createdAt": "2026-10-29T13:46:43.949Z",
+    "updatedAt": "2026-10-29T13:46:44.300Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e435066a332497eba6d",
+    "owner": "6ae34e435066a332497eba55",
+    "name": "Campus Life",
+    "description": "Snapshots from around Hatfield this semester.",
+    "hashtags": [
+      "campus",
+      "uni"
+    ],
+    "coverImage": "",
+    "posts": [
+      "6ae34e445066a332497eba81",
+      "6ae34e445066a332497eba84"
+    ],
+    "createdAt": "2026-10-29T13:46:43.997Z",
+    "updatedAt": "2026-10-29T13:46:44.707Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e445066a332497eba6f",
+    "owner": "6ae34e435066a332497eba57",
+    "name": "Drakensberg Weekends",
+    "description": "Road trips into the mountains whenever there's a long weekend.",
+    "hashtags": [
+      "drakensberg",
+      "roadtrip"
+    ],
+    "coverImage": "",
+    "posts": [
+      "6ae34e445066a332497eba87",
+      "6ae34e445066a332497eba8a"
+    ],
+    "createdAt": "2026-10-29T13:46:44.055Z",
+    "updatedAt": "2026-10-29T13:46:44.923Z",
+    "__v": 0
+  }
+]

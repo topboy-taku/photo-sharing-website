@@ -1,2 +1,8 @@
-.search-page { max-width: 600px; }
+.search-page { max-width: 900px; }
+.search-page__section { margin-top: 1.5rem; }
 .search-page__results { display: flex; flex-direction: column; gap: 4px; }
+.search-page__results--grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}

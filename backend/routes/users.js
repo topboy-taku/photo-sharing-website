@@ -72,7 +72,7 @@ router.get("/:id", async (req, res) => {
 
 // Edit your own profile.
 router.put("/:id", requireAuth, async (req, res) => {
-  if (req.user._id.toString() !== req.params.id) {
+  if (req.user._id.toString() !== req.params.id && !req.user.isAdmin) {
     return res.status(403).json({ message: "You can only edit your own profile." });
   }
   const { displayName, username, pronouns, bio, links, profileImage } = req.body || {};
@@ -94,7 +94,7 @@ router.put("/:id", requireAuth, async (req, res) => {
 
 // Delete your own profile.
 router.delete("/:id", requireAuth, async (req, res) => {
-  if (req.user._id.toString() !== req.params.id) {
+  if (req.user._id.toString() !== req.params.id && !req.user.isAdmin) {
     return res.status(403).json({ message: "You can only delete your own profile." });
   }
   try {
@@ -182,7 +182,9 @@ router.get("/", async (req, res) => {
   if (!q) return res.json([]);
   try {
     const regex = new RegExp(q, "i");
-    const users = await User.find({ $or: [{ displayName: regex }, { username: regex }] }).limit(20);
+    const users = await User.find({
+      $or: [{ displayName: regex }, { username: regex }, { email: regex }],
+    }).limit(20);
     return res.json(users.map((u) => u.toSafeObject()));
   } catch (err) {
     return res.status(500).json({ message: "Search failed.", error: err.message });

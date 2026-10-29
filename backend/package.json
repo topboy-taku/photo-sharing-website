@@ -1,12 +1,13 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Orbit backend — Express + MongoDB API",
+  "description": "Orbit backend \u2014 Express + MongoDB API",
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
     "start": "node server.js",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "export-db": "node export-db.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

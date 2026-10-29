@@ -4,3 +4,12 @@
 .album-preview__body { padding: 10px 12px; }
 .album-preview__title { margin: 0; font-weight: 600; }
 .album-preview__stats { margin: 2px 0 0 0; font-size: 0.8rem; }
+.album-preview__badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  color: var(--orbit-purple-light);
+  border: 1px solid var(--orbit-border);
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-bottom: 4px;
+}

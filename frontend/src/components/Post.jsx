@@ -4,10 +4,11 @@ import { api, getSession } from "../api/client";
 import Image from "./Image";
 import Comments from "./Comments";
 import EditPost from "./EditPost";
+import HashtagList from "./HashtagList";
 import "./Post.css";
 
-
-// hashtags, album link, like/comment counts and owner actions.
+// A full post view: image, description, hashtags, album link, like/comment
+// counts, comments, and owner actions (edit/delete) or reporting.
 function Post({ post, onUpdated, onDeleted }) {
   const navigate = useNavigate();
   const [session] = useState(() => getSession());
@@ -15,28 +16,57 @@ function Post({ post, onUpdated, onDeleted }) {
   const [localPost, setLocalPost] = useState(post);
   const [liking, setLiking] = useState(false);
   const [reportMsg, setReportMsg] = useState(null);
+  const [reportOpen, setReportOpen] = useState(false);
+  const [reportReasons, setReportReasons] = useState([]);
+  const [selectedReason, setSelectedReason] = useState("");
+  const [reporting, setReporting] = useState(false);
 
   const author = localPost.author || {};
-  const isOwner = session?.user?._id === author._id;
-  const liked = session?.user && (localPost.likes || []).some((l) => l === session.user._id || l?._id === session.user._id);
+  const isOwner = session?.user?._id === author._id || !!session?.user?.isAdmin;
+  const myId = session?.user?._id;
+  const [likeCount, setLikeCount] = useState((post.likes || []).length);
+  const [iLikedIt, setILikedIt] = useState((post.likes || []).includes(myId));
 
   const doLike = async () => {
     if (!session) return navigate("/");
     setLiking(true);
     try {
       const res = await api.likePost(localPost._id);
-      setLocalPost((p) => ({ ...p, likes: new Array(res.likes).fill(res.liked ? session.user._id : null) }));
+      setLikeCount(res.likes);
+      setILikedIt(res.liked);
     } finally {
       setLiking(false);
     }
   };
 
-  const HR = async () => {
+  const openReportForm = async () => {
+    if (!session) return navigate("/");
+    setReportOpen(true);
+    setReportMsg(null);
+    if (reportReasons.length === 0) {
+      try {
+        const reasons = await api.getReportReasons();
+        setReportReasons(reasons);
+        if (reasons[0]) setSelectedReason(reasons[0].label);
+      } catch (err) {
+        setReportMsg(err.message);
+      }
+    }
+  };
+
+  const submitReport = async (e) => {
+    e.preventDefault();
+    if (!selectedReason) return;
+    setReporting(true);
     try {
-      await api.reportPost(localPost._id, "Inappropriate");
+      await api.reportPost(localPost._id, selectedReason);
       setReportMsg("Reported. Thanks for flagging this.");
+      setReportOpen(false);
     } catch (err) {
-      setReportMsg(err.message); }
+      setReportMsg(err.message);
+    } finally {
+      setReporting(false);
+    }
   };
 
   const handleDelete = async () => {
@@ -70,15 +100,20 @@ function Post({ post, onUpdated, onDeleted }) {
 
   return (
     <article className="post">
+      {localPost.hidden && (
+        <p className="post__hidden-notice">
+          This post is hidden from feeds (reported more than twice). Only you{session?.user?.isAdmin ? " and admins" : ""} can see it here.
+        </p>
+      )}
       <Image src={localPost.image} alt={localPost.description} />
 
       <div className="post__header">
         <h2>{localPost.description.slice(0, 60)}</h2>
         <div className="post__actions">
-          <button className="btn btn-outline" onClick={HR}>
+          <button className="btn btn-outline" onClick={openReportForm}>
             ⚑ Report
           </button>
-          <button className={`btn ${liked ? "btn-primary" : "btn-outline"}`} onClick={doLike} disabled={liking}>
+          <button className={`btn ${iLikedIt ? "btn-primary" : "btn-outline"}`} onClick={doLike} disabled={liking}>
             ♡ Like
           </button>
           {isOwner && (
@@ -94,14 +129,40 @@ function Post({ post, onUpdated, onDeleted }) {
         </div>
       </div>
 
+      {reportOpen && (
+        <form className="card post__report-form" onSubmit={submitReport}>
+          <label htmlFor="report-reason">Why are you reporting this post?</label>
+          {reportReasons.length === 0 ? (
+            <p className="muted">Loading reasons…</p>
+          ) : (
+            <select
+              id="report-reason"
+              className="input-field"
+              value={selectedReason}
+              onChange={(e) => setSelectedReason(e.target.value)}
+            >
+              {reportReasons.map((r) => (
+                <option key={r._id} value={r.label}>
+                  {r.label}
+                </option>
+              ))}
+            </select>
+          )}
+          <div className="post__report-actions">
+            <button type="submit" className="btn btn-primary" disabled={reporting || reportReasons.length === 0}>
+              {reporting ? "Submitting…" : "Submit report"}
+            </button>
+            <button type="button" className="btn btn-outline" onClick={() => setReportOpen(false)}>
+              Cancel
+            </button>
+          </div>
+        </form>
+      )}
+
       <p className="post__description">{localPost.description}</p>
 
       <div className="post__tags">
-        {(localPost.hashtags || []).map((tag) => (
-          <span key={tag} className="tag">
-            #{tag}{" "}
-          </span>
-        ))}
+        <HashtagList tags={localPost.hashtags} />
       </div>
 
       {localPost.album && (
@@ -117,7 +178,7 @@ function Post({ post, onUpdated, onDeleted }) {
       )}
 
       <p className="muted post__stats">
-        {(localPost.likes || []).length} likes · {(localPost.comments || []).length} comments · Posted{" "}
+        {likeCount} likes · {(localPost.comments || []).length} comments · Posted{" "}
         {new Date(localPost.createdAt).toLocaleDateString()}
       </p>
       {reportMsg && <p className="muted">{reportMsg}</p>}

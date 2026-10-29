@@ -1,9 +1,9 @@
 const User = require("../models/User");
 
-// Simplified auth for Deliverable 2: the frontend stores the logged-in
-// user's Mongo _id (returned at signup/login) and sends it as x-user-id on
-// every request. This is NOT secure (no signature/expiry) — a real token
-// scheme is out of scope for this deliverable's basic-functionality bar.
+// Simplified auth: the frontend stores the logged-in user's Mongo _id
+// (returned at signup/login) and sends it as x-user-id on every request.
+// This is NOT secure (no signature/expiry) — a real token scheme is out of
+// scope for this project's basic-functionality bar.
 async function requireAuth(req, res, next) {
   const userId = req.header("x-user-id");
   if (!userId) {
@@ -21,4 +21,12 @@ async function requireAuth(req, res, next) {
   }
 }
 
-module.exports = { requireAuth };
+// Must follow requireAuth — relies on req.user already being set.
+function requireAdmin(req, res, next) {
+  if (!req.user?.isAdmin) {
+    return res.status(403).json({ message: "Admin access required." });
+  }
+  next();
+}
+
+module.exports = { requireAuth, requireAdmin };

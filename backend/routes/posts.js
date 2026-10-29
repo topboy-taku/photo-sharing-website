@@ -1,9 +1,13 @@
 const express = require("express");
 const Post = require("../models/Post");
 const User = require("../models/User");
+const ReportReason = require("../models/ReportReason");
 const { requireAuth } = require("../middleware/auth");
 
 const router = express.Router();
+
+// A post is auto-hidden from feeds once it collects more than this many reports.
+const AUTO_HIDE_REPORT_THRESHOLD = 2;
 
 // Global feed — every non-hidden post, newest first.
 router.get("/global", async (req, res) => {
@@ -35,15 +39,46 @@ router.get("/local/:userId", async (req, res) => {
   }
 });
 
-// Posts belonging to one user (profile page grid).
+// Posts belonging to one user (profile page grid). Hidden posts are included
+// only when the viewer is that user themselves or an admin — with a `hidden`
+// flag on each post so the frontend can badge them — so people can still find
+// their own (or, for admins, anyone's) hidden posts via a logical place.
 router.get("/user/:userId", async (req, res) => {
   try {
-    const posts = await Post.find({ author: req.params.userId, hidden: false })
+    const viewerId = req.header("x-user-id");
+    let includeHidden = false;
+    if (viewerId === req.params.userId) {
+      includeHidden = true;
+    } else if (viewerId) {
+      const viewer = await User.findById(viewerId);
+      if (viewer?.isAdmin) includeHidden = true;
+    }
+
+    const filter = { author: req.params.userId };
+    if (!includeHidden) filter.hidden = false;
+
+    const posts = await Post.find(filter)
       .sort({ createdAt: -1 })
       .populate("author", "displayName username profileImage");
     return res.json(posts);
   } catch (err) {
     return res.status(500).json({ message: "Could not load user posts.", error: err.message });
+  }
+});
+
+// Search posts by description (case-insensitive substring).
+router.get("/search", async (req, res) => {
+  const q = (req.query.q || "").trim();
+  if (!q) return res.json([]);
+  try {
+    const regex = new RegExp(q, "i");
+    const posts = await Post.find({ $or: [{ description: regex }, { hashtags: regex }], hidden: false })
+      .sort({ createdAt: -1 })
+      .limit(30)
+      .populate("author", "displayName username profileImage");
+    return res.json(posts);
+  } catch (err) {
+    return res.status(500).json({ message: "Post search failed.", error: err.message });
   }
 });
 
@@ -89,7 +124,7 @@ router.put("/:id", requireAuth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     if (!post) return res.status(404).json({ message: "Post not found." });
-    if (post.author.toString() !== req.user._id.toString()) {
+    if (post.author.toString() !== req.user._id.toString() && !req.user.isAdmin) {
       return res.status(403).json({ message: "You can only edit your own posts." });
     }
     const { description, hashtags } = req.body || {};
@@ -110,6 +145,19 @@ router.delete("/:id", requireAuth, async (req, res) => {
     if (post.author.toString() !== req.user._id.toString() && !req.user.isAdmin) {
       return res.status(403).json({ message: "You can only delete your own posts." });
     }
+
+    // Bonus behaviour: deleting a post that is the only post in an album
+    // also deletes that album.
+    if (post.album) {
+      const Album = require("../models/Album");
+      const album = await Album.findById(post.album);
+      if (album && album.posts.length === 1 && album.posts[0].toString() === post._id.toString()) {
+        await Album.findByIdAndDelete(album._id);
+      } else if (album) {
+        await Album.findByIdAndUpdate(album._id, { $pull: { posts: post._id } });
+      }
+    }
+
     await Post.findByIdAndDelete(req.params.id);
     return res.json({ message: "Post deleted." });
   } catch (err) {
@@ -151,15 +199,26 @@ router.post("/:id/comment", requireAuth, async (req, res) => {
   }
 });
 
+// Reports must use one of the admin-maintained predefined reasons.
 router.post("/:id/report", requireAuth, async (req, res) => {
   try {
     const { reason } = req.body || {};
     if (!reason) return res.status(400).json({ message: "A report reason is required." });
+
+    const validReason = await ReportReason.findOne({ label: reason });
+    if (!validReason) {
+      return res.status(400).json({ message: "Please choose one of the listed report reasons." });
+    }
+
     const post = await Post.findById(req.params.id);
     if (!post) return res.status(404).json({ message: "Post not found." });
+
     post.reports.push({ reporter: req.user._id, reason });
+    if (post.reports.length > AUTO_HIDE_REPORT_THRESHOLD) {
+      post.hidden = true;
+    }
     await post.save();
-    return res.json({ message: "Post reported.", reportCount: post.reports.length });
+    return res.json({ message: "Post reported.", reportCount: post.reports.length, hidden: post.hidden });
   } catch (err) {
     return res.status(500).json({ message: "Could not report post.", error: err.message });
   }

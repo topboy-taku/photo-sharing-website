@@ -7,6 +7,8 @@ const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const postRoutes = require("./routes/posts");
 const albumRoutes = require("./routes/albums");
+const adminRoutes = require("./routes/admin");
+const activityRoutes = require("./routes/activity");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,6 +30,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/albums", albumRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/activity", activityRoutes);
 
 async function start() {
   if (!MONGODB_URI) {

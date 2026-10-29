@@ -42,10 +42,9 @@ function SignupForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setServerError(null);
-    if (!validate()) return;
-
+    if(!validate()) return;
     setSubmitting(true);
-    try {
+    try{
       const res = await api.signup({ displayName, username, email, password });
       setSession(res.user, res.token);
       navigate("/home");

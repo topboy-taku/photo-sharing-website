@@ -8,7 +8,7 @@ function Comments({ postId, comments, onCommentAdded }) {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
-      const handleSubmit = async (e) => {
+         const handleSubmit = async (e) => {
     e.preventDefault();
     if (!draft.trim()) return;
     setSubmitting(true);

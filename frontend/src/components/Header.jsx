@@ -23,6 +23,7 @@ function Header() {
         <Link to="/home">Home</Link>
         <Link to="/search">Search</Link>
         {session?.user && <Link to={`/profile/${session.user._id}`}>Profile</Link>}
+        {session?.user?.isAdmin && <Link to="/admin">Admin</Link>}
         <button className="orbit-header__logout" onClick={handleLogOut}>
           Log out
         </button>

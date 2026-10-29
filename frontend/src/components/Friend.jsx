@@ -6,11 +6,13 @@ import "./Friend.css";
 function Friend({ friends = [], requests = [], title = "Friends", onRequestHandled }) {
   const [busyId, setBusyId] = useState(null);
   const respond = async (userId, accept) => {
-    setBusyId(userId);
-    try {
+       setBusyId(userId);
+
+    
+    try{
       if(accept) await api.acceptFriendRequest(userId);
         else await api.declineFriendRequest(userId);
-      onRequestHandled?.();
+          onRequestHandled?.();
     } catch (err) {
       alert(err.message);
     } finally {
@@ -32,9 +34,9 @@ function Friend({ friends = [], requests = [], title = "Friends", onRequestHandl
                     Accept
             </button>
              <button className="btn btn-outline" disabled={busyId === req._id} onClick={() => respond(req._id, false)}>
-                  ✕
-                </button>
-              </div>
+                ✕
+            </button>
+          </div>
             }
           />
         ))}

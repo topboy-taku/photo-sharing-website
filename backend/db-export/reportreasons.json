@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "6ae34e455066a332497eba96",
+    "label": "Spam",
+    "createdAt": "2026-10-29T13:46:45.180Z",
+    "updatedAt": "2026-10-29T13:46:45.180Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e455066a332497eba98",
+    "label": "Inappropriate content",
+    "createdAt": "2026-10-29T13:46:45.228Z",
+    "updatedAt": "2026-10-29T13:46:45.228Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e455066a332497eba9a",
+    "label": "Harassment or bullying",
+    "createdAt": "2026-10-29T13:46:45.279Z",
+    "updatedAt": "2026-10-29T13:46:45.279Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e455066a332497eba9c",
+    "label": "False information",
+    "createdAt": "2026-10-29T13:46:45.329Z",
+    "updatedAt": "2026-10-29T13:46:45.329Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e455066a332497eba9e",
+    "label": "Copyright violation",
+    "createdAt": "2026-10-29T13:46:45.380Z",
+    "updatedAt": "2026-10-29T13:46:45.380Z",
+    "__v": 0
+  }
+]

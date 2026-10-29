@@ -69,6 +69,8 @@ input, textarea, select { font-family: var(--font-body); }
 
 .field-error { color: var(--orbit-pink); font-size: 0.78rem; margin-top: 4px; }
 .tag { color: var(--orbit-purple-light); font-size: 0.82rem; }
+.tag--link { background: none; border: none; padding: 0; margin: 0 0.2rem 0 0; font: inherit; color: var(--orbit-purple-light); font-size: 0.82rem; text-decoration: none; cursor: pointer; }
+.tag--link:hover { text-decoration: underline; }
 .muted { color: var(--orbit-text-muted); }
 
 .page-layout { display: flex; min-height: 100vh; }
@@ -91,3 +93,12 @@ label { display: block; font-size: 0.85rem; margin-bottom: 6px; color: var(--orb
 
 .loading-text { color: var(--orbit-text-muted); padding: 20px 0; }
 .error-text { color: var(--orbit-pink); padding: 20px 0; }
+
+/* Small-screen adjustments — the page content itself already reflows via
+   CSS grid (auto-fill) on the various preview grids; this covers the
+   chrome around it (header, page padding) that doesn't. */
+@media (max-width: 640px) {
+  .page-main { padding: 16px; }
+  .orbit-header { padding: 12px 16px; flex-wrap: wrap; gap: 10px; }
+  .orbit-header__nav { gap: 14px; flex-wrap: wrap; }
+}

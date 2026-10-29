@@ -9,3 +9,16 @@
 .post__author-avatar { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; font-size: 1.1rem; }
 .post__author-name { margin: 0; font-weight: 600; }
 .post__author-view { margin-left: auto; }
+
+.post__report-form { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.75rem 0; padding: 1rem; }
+.post__report-actions { display: flex; gap: 0.5rem; }
+
+.post__hidden-notice {
+  background: rgba(232, 92, 158, 0.12);
+  border: 1px solid var(--orbit-pink);
+  color: var(--orbit-pink);
+  border-radius: var(--orbit-radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+}

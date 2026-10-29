@@ -13,6 +13,20 @@ router.get("/user/:userId", async (req, res) => {
     return res.status(500).json({ message: "Could not load albums.", error: err.message });
   }
 });
+router.get("/search", async (req, res) =>{
+  const q = (req.query.q || "").trim();
+  if (!q) return res.json([]);
+  try {
+    const regex = new RegExp(q, "i");
+    const albums = await Album.find({ $or: [{ name: regex }, { description: regex }, { hashtags: regex }] })
+      .sort({ createdAt: -1 })
+      .limit(30)
+      .populate("owner", "displayName username");
+    return res.json(albums);
+  } catch (err) {
+    return res.status(500).json({ message: "Album search failed.", error: err.message });
+  }
+});
 
 router.get("/:id", async (req, res) => {
   try {
@@ -46,7 +60,7 @@ router.put("/:id", requireAuth, async (req, res) => {
   try {
     const album = await Album.findById(req.params.id);
     if (!album) return res.status(404).json({ message: "Album not found." });
-    if (album.owner.toString() !== req.user._id.toString()) {
+    if (album.owner.toString() !== req.user._id.toString() && !req.user.isAdmin) {
       return res.status(403).json({ message: "You can only edit your own albums." });
     }
     const { name, description, hashtags } = req.body || {};

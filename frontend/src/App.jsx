@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import Post from "./pages/Post";
 import Album from "./pages/Album";
 import Search from "./pages/Search";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/post/:id" element={<Post />} />
         <Route path="/album/:id" element={<Album />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );

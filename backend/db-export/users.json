@@ -1,0 +1,198 @@
+[
+  {
+    "_id": "6ae34e425066a332497eba4b",
+    "displayName": "Takunda Mugwagwa",
+    "username": "takunda",
+    "email": "takunda@example.com",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "he/him",
+    "bio": "Building Orbit for IMY220. Into synths, film photography and late-night drives.",
+    "links": [
+      "instagram.com/takunda"
+    ],
+    "profileImage": "",
+    "isAdmin": false,
+    "friends": [
+      "6ae34e425066a332497eba4d",
+      "6ae34e425066a332497eba4f"
+    ],
+    "friendRequestsReceived": [
+      "6ae34e425066a332497eba53"
+    ],
+    "friendRequestsSent": [],
+    "createdAt": "2026-10-29T13:46:42.768Z",
+    "updatedAt": "2026-10-29T13:46:43.850Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e425066a332497eba4d",
+    "displayName": "Lindiwe Khumalo",
+    "username": "lindiwe.k",
+    "email": "lindiwe@example.com",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "she/her",
+    "bio": "Nebula chaser. Film photography and synthwave playlists.",
+    "links": [
+      "instagram.com/lindiwe.k"
+    ],
+    "profileImage": "",
+    "isAdmin": false,
+    "friends": [
+      "6ae34e425066a332497eba4b",
+      "6ae34e425066a332497eba51",
+      "6ae34e435066a332497eba59"
+    ],
+    "friendRequestsReceived": [],
+    "friendRequestsSent": [],
+    "createdAt": "2026-10-29T13:46:42.828Z",
+    "updatedAt": "2026-10-29T13:46:43.792Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e425066a332497eba4f",
+    "displayName": "Thabo Nkosi",
+    "username": "thabo.n",
+    "email": "thabo@example.com",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "he/him",
+    "bio": "Street photography around Joburg. Coffee enthusiast.",
+    "links": [
+      "instagram.com/thabo.shoots"
+    ],
+    "profileImage": "",
+    "isAdmin": false,
+    "friends": [
+      "6ae34e425066a332497eba4b",
+      "6ae34e425066a332497eba53"
+    ],
+    "friendRequestsReceived": [],
+    "friendRequestsSent": [],
+    "createdAt": "2026-10-29T13:46:42.880Z",
+    "updatedAt": "2026-10-29T13:46:43.539Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e425066a332497eba51",
+    "displayName": "Aisha Patel",
+    "username": "aisha.p",
+    "email": "aisha@example.com",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "she/her",
+    "bio": "Hiking trails and sunrise chasing. Based in Cape Town.",
+    "links": [],
+    "profileImage": "",
+    "isAdmin": false,
+    "friends": [
+      "6ae34e425066a332497eba4d"
+    ],
+    "friendRequestsReceived": [],
+    "friendRequestsSent": [],
+    "createdAt": "2026-10-29T13:46:42.930Z",
+    "updatedAt": "2026-10-29T13:46:43.492Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e425066a332497eba53",
+    "displayName": "Michael Chen",
+    "username": "m.chen",
+    "email": "michael@example.com",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "he/him",
+    "bio": "Food photography and weekend markets.",
+    "links": [
+      "instagram.com/chenlens"
+    ],
+    "profileImage": "",
+    "isAdmin": false,
+    "friends": [
+      "6ae34e425066a332497eba4f"
+    ],
+    "friendRequestsReceived": [],
+    "friendRequestsSent": [
+      "6ae34e425066a332497eba4b"
+    ],
+    "createdAt": "2026-10-29T13:46:42.980Z",
+    "updatedAt": "2026-10-29T13:46:43.901Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e435066a332497eba55",
+    "displayName": "Nomvula Dlamini",
+    "username": "nomvula.d",
+    "email": "nomvula@example.com",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "she/her",
+    "bio": "Studying graphic design. Posting campus life and typography finds.",
+    "links": [],
+    "profileImage": "",
+    "isAdmin": false,
+    "friends": [
+      "6ae34e435066a332497eba57"
+    ],
+    "friendRequestsReceived": [],
+    "friendRequestsSent": [],
+    "createdAt": "2026-10-29T13:46:43.031Z",
+    "updatedAt": "2026-10-29T13:46:43.644Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e435066a332497eba57",
+    "displayName": "Sipho Ndlovu",
+    "username": "sipho.n",
+    "email": "sipho@example.com",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "he/him",
+    "bio": "Weekend road trips across the Drakensberg.",
+    "links": [
+      "instagram.com/sipho.explores"
+    ],
+    "profileImage": "",
+    "isAdmin": false,
+    "friends": [
+      "6ae34e435066a332497eba55"
+    ],
+    "friendRequestsReceived": [],
+    "friendRequestsSent": [],
+    "createdAt": "2026-10-29T13:46:43.082Z",
+    "updatedAt": "2026-10-29T13:46:43.697Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e435066a332497eba59",
+    "displayName": "Grace Mutasa",
+    "username": "grace.m",
+    "email": "grace@example.com",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "she/her",
+    "bio": "Plant parent and amateur botanist. Film over digital, always.",
+    "links": [],
+    "profileImage": "",
+    "isAdmin": false,
+    "friends": [
+      "6ae34e425066a332497eba4d"
+    ],
+    "friendRequestsReceived": [],
+    "friendRequestsSent": [],
+    "createdAt": "2026-10-29T13:46:43.136Z",
+    "updatedAt": "2026-10-29T13:46:43.743Z",
+    "__v": 0
+  },
+  {
+    "_id": "6ae34e435066a332497eba5b",
+    "displayName": "Orbit Admin",
+    "username": "admin",
+    "email": "admin@orbit.app",
+    "passwordHash": "$2a$10$RFUoD2ja6TPnPXkmeBcptOHwU.VVaM2ughqvY.X9o2d9bUi0oJWfa",
+    "pronouns": "",
+    "bio": "Orbit moderation account.",
+    "links": [],
+    "profileImage": "",
+    "isAdmin": true,
+    "friends": [],
+    "friendRequestsReceived": [],
+    "friendRequestsSent": [],
+    "createdAt": "2026-10-29T13:46:43.185Z",
+    "updatedAt": "2026-10-29T13:46:43.185Z",
+    "__v": 0
+  }
+]

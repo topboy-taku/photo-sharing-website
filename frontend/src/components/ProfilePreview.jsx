@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import "./ProfilePreview.css";
 
-// Small preview of a user — used in friend lists, search results, "people you may know", etc.
-// `action` is an optional node (e.g. an Add / Accept button) rendered on the right.
 function ProfilePreview({ user, subtitle, action }) {
   return (
     <div className="profile-preview">

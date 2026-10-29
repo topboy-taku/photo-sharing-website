@@ -20,10 +20,6 @@ function Splash() {
         <span className="splash__logo">
           orbit<span className="splash__dot">●</span>
         </span>
-        <div className="splash__nav-links">
-          <a href="#how-it-works">How it works</a>
-          <a href="#explore">Explore</a>
-        </div>
       </nav>
 
       <div className="splash__content">

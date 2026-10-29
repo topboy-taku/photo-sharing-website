@@ -35,7 +35,7 @@ function CreatePost({ onCreated, onCancel, albumId = null }) {
     }
   };
 
-  const removeHashtag = (tag) => setHashtags(hashtags.filter((t) => t !== tag));
+  const removeHashtag = (tag) =>   setHashtags(hashtags.filter((t) => t !== tag));
      const handleFileChange = async (e) => {
     const file = e.target.files?.[0];
     if (file) setImage(await fileToDataUrl(file));

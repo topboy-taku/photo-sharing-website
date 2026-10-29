@@ -10,6 +10,7 @@ function AlbumPreview({ album }) {
         <div className="album-preview__image album-preview__image--empty muted">No cover yet</div>
       )}
       <div className="album-preview__body">
+           <span className="album-preview__badge">Album</span>
         <p className="album-preview__title">{album.name}</p>
         <p className="muted album-preview__stats">{(album.posts || []).length} posts</p>
       </div>

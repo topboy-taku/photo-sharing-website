@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "../components/Header";
 import PostPreview from "../components/PostPreview";
+import HashtagList from "../components/HashtagList";
 import { api, getSession } from "../api/client";
 import "./Album.css";
 
@@ -21,7 +22,7 @@ function AlbumPage() {
   const [error, setError] = useState(null);
   const [addPostId, setAddPostId] = useState("");
 
-  const isOwner = session?.user?._id === album?.owner?._id;
+  const isOwner = session?.user?._id === album?.owner?._id || !!session?.user?.isAdmin;
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -135,8 +136,7 @@ function AlbumPage() {
                 <h2>{album.name}</h2>
                 <p className="muted">{album.description}</p>
                 <p className="muted">
-                  {(album.hashtags || []).map((t) => `#${t} `)}
-                  {album.posts.length} posts · by @{album.owner?.username}
+                  <HashtagList tags={album.hashtags} /> {album.posts.length} posts · by @{album.owner?.username}
                 </p>
                 {isOwner && (
                   <div className="album-page__actions">

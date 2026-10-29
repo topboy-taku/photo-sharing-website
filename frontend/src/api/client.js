@@ -40,11 +40,11 @@ async function request(path, { method = "GET", body, auth = false } = {}) {
   }
 
   if (!res.ok) {
-    const message = data?.message || `Request failed (${res.status})`;
-    const error = new Error(message);
-    error.status = res.status;
-    error.data = data;
-    throw error;
+    let message = "Request failed (" + res.status + ")";
+    if (data && data.message) {
+      message = data.message;
+    }
+    throw new Error(message);
   }
   return data;
 }
@@ -70,9 +70,10 @@ export const api = {
   unfriend: (id) => request(`/api/users/${id}/unfriend`, { method: "POST", auth: true }),
 
   // Posts
-  getGlobalFeed: () => request("/api/posts/global"),
-  getLocalFeed: (userId) => request(`/api/posts/local/${userId}`),
-  getUserPosts: (userId) => request(`/api/posts/user/${userId}`),
+  getGlobalFeed: () => request("/api/activity/global"),
+  getLocalFeed: (userId) => request(`/api/activity/local/${userId}`),
+  getUserPosts: (userId) => request(`/api/posts/user/${userId}`, { auth: true }),
+  searchPosts: (q) => request(`/api/posts/search?q=${encodeURIComponent(q)}`),
   getPost: (id) => request(`/api/posts/${id}`),
   createPost: (payload) => request("/api/posts", { method: "POST", body: payload, auth: true }),
   updatePost: (id, payload) => request(`/api/posts/${id}`, { method: "PUT", body: payload, auth: true }),
@@ -80,10 +81,12 @@ export const api = {
   likePost: (id) => request(`/api/posts/${id}/like`, { method: "POST", auth: true }),
   commentOnPost: (id, text) => request(`/api/posts/${id}/comment`, { method: "POST", body: { text }, auth: true }),
   reportPost: (id, reason) => request(`/api/posts/${id}/report`, { method: "POST", body: { reason }, auth: true }),
+  getReportReasons: () => request("/api/admin/reasons", { auth: true }),
 
   // Albums
   getUserAlbums: (userId) => request(`/api/albums/user/${userId}`),
   getAlbum: (id) => request(`/api/albums/${id}`),
+  searchAlbums: (q) => request(`/api/albums/search?q=${encodeURIComponent(q)}`),
   createAlbum: (payload) => request("/api/albums", { method: "POST", body: payload, auth: true }),
   updateAlbum: (id, payload) => request(`/api/albums/${id}`, { method: "PUT", body: payload, auth: true }),
   deleteAlbum: (id) => request(`/api/albums/${id}`, { method: "DELETE", auth: true }),
@@ -91,6 +94,16 @@ export const api = {
     request(`/api/albums/${albumId}/posts`, { method: "POST", body: { postId }, auth: true }),
   removePostFromAlbum: (albumId, postId) =>
     request(`/api/albums/${albumId}/posts/${postId}`, { method: "DELETE", auth: true }),
+
+  // Admin
+  getReportedPosts: () => request("/api/admin/reports", { auth: true }),
+  getHiddenPosts: () => request("/api/admin/hidden-posts", { auth: true }),
+  setPostVisibility: (id, hidden) =>
+    request(`/api/admin/posts/${id}/visibility`, { method: "PUT", body: { hidden }, auth: true }),
+  getAllUsersAdmin: () => request("/api/admin/users", { auth: true }),
+  getAllAlbumsAdmin: () => request("/api/admin/albums", { auth: true }),
+  addReportReason: (label) => request("/api/admin/reasons", { method: "POST", body: { label }, auth: true }),
+  deleteReportReason: (id) => request(`/api/admin/reasons/${id}`, { method: "DELETE", auth: true }),
 };
 
 // Reads an <input type="file"> image as a base64 data URL — this project has

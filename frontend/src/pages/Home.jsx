@@ -52,7 +52,16 @@ function Home() {
   // Trending hashtags computed client-side from the currently loaded feed —
   // no dedicated endpoint needed for this lightweight widget.
   const hashtagCounts = {};
-  posts.forEach((p) => (p.hashtags || []).forEach((t) => (hashtagCounts[t] = (hashtagCounts[t] || 0) + 1)));
+  for (const item of posts) {
+    const tags = item.hashtags || [];
+    for (const tag of tags) {
+      if (hashtagCounts[tag]) {
+        hashtagCounts[tag] = hashtagCounts[tag] + 1;
+      } else {
+        hashtagCounts[tag] = 1;
+      }
+    }
+  }
   const trending = Object.entries(hashtagCounts)
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5);

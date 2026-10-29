@@ -10,6 +10,12 @@
 .splash__tagline { color: var(--orbit-text-muted); max-width: 480px; margin: 20px 0; line-height: 1.6; }
 .splash__pills { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9rem; }
 .splash__pills span::before { content: "● "; color: var(--orbit-pink); }
-.splash__auth { width: 380px; padding: 28px; flex-shrink: 0; }
+.splash__auth { width: 100%; max-width: 380px; padding: 28px; flex-shrink: 0; }
 .splash__tabs { display: flex; gap: 10px; margin: 18px 0; }
 .splash__tabs .btn { flex: 1; }
+
+@media (max-width: 640px) {
+  .splash { padding: 0 16px 24px; }
+  .splash__hero h1 { font-size: 2.2rem; }
+  .splash__nav-links { gap: 16px; }
+}

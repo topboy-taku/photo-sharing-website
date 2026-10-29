@@ -1,0 +1,10 @@
+.admin-page { max-width: 900px; }
+.admin-page__tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0; }
+.admin-page__section { display: flex; flex-direction: column; gap: 0.75rem; }
+.admin-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 1rem; }
+.admin-row__main { flex: 1; min-width: 0; }
+.admin-row__reasons { font-size: 0.85rem; }
+.admin-row__actions { display: flex; gap: 0.5rem; flex-shrink: 0; }
+.admin-page__add-reason { display: flex; gap: 0.5rem; margin-bottom: 0.5rem; }
+.admin-page__add-reason .input-field { flex: 1; }
+.admin-row--editing { flex-direction: column; align-items: stretch; }
